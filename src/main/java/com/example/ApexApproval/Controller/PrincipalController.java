@@ -1,9 +1,10 @@
 package com.example.ApexApproval.Controller;
 
-import com.example.ApexApproval.Model.Dean;
+import com.example.ApexApproval.Model.Principal;
 import com.example.ApexApproval.Model.User;
 import com.example.ApexApproval.Model.UserTable;
-import com.example.ApexApproval.Service.DeanService;
+import com.example.ApexApproval.Service.PrincipalService;
+import com.example.ApexApproval.Service.UserService;
 import com.example.ApexApproval.Service.UserTableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,21 +14,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @Controller
 @Component
-@RequestMapping("/dean")
+@RequestMapping("/principal")
 @CrossOrigin
-public class DeanController {
+public class PrincipalController {
     @Autowired
-    DeanService deanService;
+    PrincipalService principalService;
+
     @GetMapping("/show")
-    public ResponseEntity<List<Dean>> showAll(){
-        return new ResponseEntity<>(deanService.showAll(), HttpStatus.OK);
+    public ResponseEntity<List<Principal>> showAll(){
+        return new ResponseEntity<>(principalService.showAll(), HttpStatus.OK);
     }
     @PutMapping("/update")
     public ResponseEntity<Void> update(@RequestParam int id, @RequestParam int approvalStatus){
-        deanService.update(id,approvalStatus);
+        principalService.update(id,approvalStatus);
         return new ResponseEntity<>(HttpStatus.OK);
     }
     @Autowired
@@ -37,5 +38,4 @@ public class DeanController {
         userTableService.addUser(user);  // Create the user
         return new ResponseEntity<>( HttpStatus.CREATED);  // Return the created user
     }
-
 }

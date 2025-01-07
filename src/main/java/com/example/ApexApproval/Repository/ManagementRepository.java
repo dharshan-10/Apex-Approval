@@ -1,4 +1,7 @@
 package com.example.ApexApproval.Repository;
 
-public interface ManagementRepository {
+import com.example.ApexApproval.Model.Management;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ManagementRepository extends JpaRepository<Management,Integer> {
 }

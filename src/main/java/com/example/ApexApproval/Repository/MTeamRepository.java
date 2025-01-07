@@ -1,4 +1,7 @@
 package com.example.ApexApproval.Repository;
 
-public interface MTeamRepository {
+import com.example.ApexApproval.Model.MTeam;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface MTeamRepository extends JpaRepository<MTeam, Integer> {
 }
